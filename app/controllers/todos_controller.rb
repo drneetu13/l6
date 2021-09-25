@@ -1,5 +1,4 @@
 class TodosController < ApplicationController
-
   skip_before_action :verify_authenticity_token
 
   def index
@@ -13,21 +12,17 @@ class TodosController < ApplicationController
 
   def update
     id = params[:id]
-    submitted = params[:submitted]
-    todo = Todo.find(id)
-    todo.submitted = submitted
-    todo.save!
+    completed = params[:completed]
+    todo = Todo.updateTask(id, completed)
 
-    render plain: "Update todo completed status #{submitted}"
+    render plain: "Update todo completed status #{completed}"
   end
 
   def create
     text = params[:todo_text]
     due = DateTime.parse(params[:due_date])
 
-
-    newTodo = Todo.create!(todo_text: text, due_date: due, submitted: false)
+    newTodo = Todo.createTask({:text => text, :due => due, :completed => false})
     render plain: "Hey, Your new todo is created with the id #{newTodo.id}"
-
   end
 end
