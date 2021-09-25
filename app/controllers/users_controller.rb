@@ -32,8 +32,8 @@ class UsersController < ApplicationController
   def login
     email = params[:email]
     password = params[:password]
-    user = User.find_by(email: email, password: password)
+    response = User.exists?(email: email, password: password)
 
-    render plain: user ? true : false
+    render plain: response
   end 
 end
