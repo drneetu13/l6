@@ -26,6 +26,17 @@ class Todo < ActiveRecord::Base
     all.map { |todo| todo.to_displayable_string }
   end
 
+  def self.updateTask(id, completed)
+    todo = Todo.find(id)
+    todo.completed = completed
+    todo.save!
+    todo
+  end
+
+  def self.createTask(h)
+    Todo.create!(todo_text: h[:text], due_date: h[:due], completed: false)
+  end
+
   def self.add_task(h)
     Todo.create!(todo_text: h[:todo_text], due_date: Date.today + h[:due_in_days], completed: false)
   end
