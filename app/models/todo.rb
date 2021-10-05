@@ -9,17 +9,22 @@ class Todo < ActiveRecord::Base
 
   def self.overdue
     where("due_date < ?", Date.today)
-      .map { |todo| todo.to_displayable_string }
   end
 
   def self.due_today
     where(due_date: Date.today)
-      .map { |todo| todo.to_displayable_string }
   end
 
   def self.due_later
     where("due_date > ?", Date.today)
-      .map { |todo| todo.to_displayable_string }
+  end
+
+  def self.completed
+    where(completed: true)
+  end
+
+  def self.notcompleted
+    where(completed: false)
   end
 
   def self.to_displayable_list
