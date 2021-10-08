@@ -22,8 +22,8 @@ class TodosController < ApplicationController
   def create
     text = params[:todo_text]
     due = DateTime.parse(params[:due_date])
-
     newTodo = Todo.createTask({:text => text, :due => due, :completed => false})
-    render plain: "Hey, Your new todo is created with the id #{newTodo.id}"
+
+    redirect_to todos_path
   end
 end
