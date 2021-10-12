@@ -1,25 +1,18 @@
-<div class="todoList">
-  <div class="todoList-heading">
+<div class="list">
+  <div class="heading">
     <h3><%= section_label %></h3>
-    <span class="todoList-count"><%= todos.completed.count %>/<%= todos.length %></span>
+    <span class="count"><%= todos.completed.count %>/<%= todos.length %></span>
   </div>
-  <ul class="todoList-list">
+  <ul class="list-ct">
     <% todos.each do |todo| %>
-      <li class="todoList-list_item">
-        <%= form_with url: "/todos/#{todo.id}", method: "patch" do |form| %>
-          <%= form.check_box :completed, :checked => todo.completed, :onclick => "this.form.submit()" %>
-        <% end %>
-        <span class="list_item-text <%= todo.completed && 'list_item-text--completed' %>"> <%= todo.todo_text %></span>
+      <li class="list-item">
+        <input type="radio" <%= todo.completed && 'check' %> >
+        <span class="item-text <%= todo.completed && 'item--completed' %>"> <%= todo.todo_text %></span>
         <% if showDate %>
-          <span class="list_item-duedate"> <%= todo.due_date.to_s(:short) %></span>
+          <span class="item-duedate"> <%= todo.due_date.to_s(:short) %></span>
         <% end %>
         <%# <span class="list_item-overdue">Overdue</span> %>
-        <%= form_with url: "/todos/#{todo.id}", method: "delete" do |form| %>
-          <%# <button class="list_item-deleteBtn"><img src="./delete.png"></button> %>
-          <%= form.button :type => 'submit', :class => "list_item-deleteBtn" do |btn| %>
-            <img src="./delete.png">
-          <% end %>
-        <% end %>
+        <button class="item-delete"><img src="./delete.png"></button>
       </li>
     <% end %>
   </li>
