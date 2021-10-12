@@ -7,45 +7,40 @@
 .container {
   width: 500px;
   margin: 30px auto;
+  padding: 20px;
+  /* border: 1px solid gray; */
+  background: whitesmoke;
 }
 
 .title {
+  text-align: center;
   font-size: 25px;
   color: #453c52;
   letter-spacing: 0.14px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.todoForm {
+form {
   display: flex;
   column-gap: 10px;
+  justify-content: center;
   margin-bottom: 30px;
 }
 
-.todoList-count {
+/* .item-duedate {
   font-size: 12px;
-  color: #453c52;
+  color: royalblue;
   letter-spacing: 0.09px;
+} */
+
+.text-input,
+.due-input {
+  border: 1px solid gray;
+  padding: 10px;
 }
 
-.todoList__timestamp {
-  font-size: 12px;
-  color: #726a7e;
-  letter-spacing: 0.09px;
-}
-
-.todoForm__textInput,
-.todoForm__dueDateInput {
-  background: #ffffff;
-  border: 1px solid #bfb8cc;
-  border-radius: 4px;
-  border-radius: 4px;
-  padding: 7px;
-}
-
-.todoForm__submitBtn {
-  background: #48bb78;
-  border-radius: 4px;
+.submit-btn {
+  background: brown;
   border-radius: 4px;
   border: none;
   font-family: OpenSans-Semibold;
@@ -55,24 +50,32 @@
   letter-spacing: 0.1px;
 }
 
-.todoList-heading {
+.list .heading {
   display: flex;
   column-gap: 10px;
   align-items: center;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
-.todoList_heading h3 {
+.list .heading .count {
+  font-size: 12px;
+  color: brown;
+  font-weight: bold;
+  letter-spacing: 0.09px;
+}
+
+.heading h3 {
   font-size: 14px;
   color: #453c52;
   letter-spacing: 0.1px;
 }
 
-.todoList {
+.list {
   margin-bottom: 20px;
 }
 
-.todoList-list {
+.list-ct {
   list-style: none;
   display: grid;
   padding-left: 10px;
@@ -80,12 +83,12 @@
   row-gap: 5px;
 }
 
-.todoList-list_item {
+.list-item {
   display: inline-flex;
   column-gap: 10px;
   padding: 5px;
   align-items: center;
-  font-size: 14px;
+  /* font-size: 14px; */
   color: #453c52;
   letter-spacing: 0.1px;
   cursor: pointer;
@@ -97,31 +100,32 @@
   letter-spacing: 0.09px;
 }
 
-.list_item-text--completed {
+.text--completed {
   text-decoration: line-through;
 }
 
-.todoList-list_item:hover {
+.list-item:hover {
   background: #f1edf7;
   border-radius: 4px;
 }
 
-.todoList-list_item:hover .list_item-deleteBtn {
+.list-item:hover .item-delete {
   visibility: visible;
 }
 
-.list_item-deleteBtn {
+.item-delete {
   border: none;
   visibility: hidden;
   background: none;
 }
 
-.list_item-deleteBtn img {
+.item-delete img {
   width: 15px;
   height: 15px;
 }
 
-.list_item-duedate {
+.item-duedate {
   font-size: 14px;
-  color: #beb8c8;
+  color: royalblue;
+  letter-spacing: 0.09px;
 }
