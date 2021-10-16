@@ -6,30 +6,23 @@ class TodosController < ApplicationController
   end
 
   def show
-    id = params[:id]
-    render plain: Todo.find(id).to_displayable_string
+    render plain: Todo.find(params[:id]).to_displayable_string
   end
 
   def update
-    id = params[:id]
-    completed = params[:completed]
-    todo = Todo.updateTask(id, completed)
+    Todo.updateTask(params[:id], params[:completed])
 
     redirect_to todos_path
   end
 
   def delete
-    id = params[:id]
-    todo = Todo.find(id)
-    todo.destroy
+    Todo.find(params[:id]).destroy
 
     redirect_to todos_path
   end
 
   def create
-    text = params[:todo_text]
-    due = DateTime.parse(params[:due_date])
-    newTodo = Todo.createTask({ :text => text, :due => due, :completed => false })
+    Todo.createTask({ :text => params[:todo_text], :due => DateTime.parse(params[:due_date]), :completed => false })
 
     redirect_to todos_path
   end
