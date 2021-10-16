@@ -1,10 +1,13 @@
 <div class="container">
   <h1 class="title">My Todo List</h1>
-  <form class="form">
-    <input type="text" class="text-input" placeholder="What's next?">
-    <input type="date" class="due-input" name="dueDate">
-    <button class="submit-btn">Add</button>
-  </form>
+  <%= form_with url: "/todos", method: "post" do |form| %>
+    <div class="form">
+      <%= form.text_field :todo_text, :class => "text-input", :placeholder => "What's next?" %>
+      <%= form.date_field :due_date, :class => "due-input" %>
+      <%# <input type="date" class="todoForm__dueDateInput" name="due_date"> %>
+      <button type="submit" class="submit-btn">Add</button>
+    </div>
+  <% end %>
   <%= render partial: "todos-section", locals: {section_label: "Overdue", todos: Todo.overdue.notcompleted, showDate: true} %>
   <%= render partial: "todos-section", locals: {section_label: "Due Today", todos: Todo.due_today, showDate: false }%>
   <%= render partial: "todos-section", locals: {section_label: "Due Later", todos: Todo.due_later, showDate: true } %>
