@@ -1,0 +1,14 @@
+<%= form_with url: "/users" , method: "post", class: "register-form" do |userForm| %>
+  <h1 class="form-title">Register New user</h1>
+  <label class="label">First Name:</label>
+  <%= userForm.text_field :firstname, placeholder: "First Name", class: "first"   %>
+  <label class="label">Last Name:</label>
+  <%= userForm.text_field :lastname, placeholder: "Last Name", class: "last"    %>
+  <label class="label">Email:</label>
+  <%= userForm.text_field :email, placeholder: "Your Email", class: "email"      %>
+  <label class="label">Password:</label>
+  <%= userForm.text_field :password, placeholder: "Password", class: "password"     %>
+  <%= userForm.button :submit, class: "submit" do %>
+    Register
+  <% end %>
+<% end %>

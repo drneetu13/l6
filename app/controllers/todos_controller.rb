@@ -1,29 +1,38 @@
 class TodosController < ApplicationController
 
   def index
-    # render plain: Todo.to_displayable_list.join("\n")
+    @todos = Todo.of_user(current_user)
     render "index"
   end
 
   def show
-    render plain: Todo.find(params[:id]).to_displayable_string
+    render plain: Todo.of_user(current_user).find(params[:id]).to_displayable_string
   end
 
   def update
-    Todo.updateTask(params[:id], params[:completed])
+    begin
+      todo = Todo.of_user(current_user).updateTask(params[:id], params[:completed])
+    rescue => exception
+    end
 
     redirect_to todos_path
   end
 
   def delete
-    Todo.find(params[:id]).destroy
+    begin
+      todo = Todo.of_user(current_user).find(params[:id])
+      todo.destroy
+    rescue => exception
+    end
 
     redirect_to todos_path
   end
 
   def create
-    Todo.createTask({ :text => params[:todo_text], :due => DateTime.parse(params[:due_date]), :completed => false })
-
+    newTodo =  Todo.new(todo_text: params[:todo_text], due_date: params[:due_date], completed: false, user_id: current_user.id)
+    if !newTodo.save
+      flash[:error] = newTodo.errors.full_messages.join(', ')
+    end
     redirect_to todos_path
   end
 end

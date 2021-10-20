@@ -1,0 +1,33 @@
+.register-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  background: whitesmoke;
+}
+
+.register-form .label {
+  margin-top: 10px;
+}
+
+.register-form .form-title {
+  /* margin-bottom: 10px; */
+}
+
+.register-form input {
+  background: #ffffff;
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+.register-form .submit {
+  background: brown;
+  border: none;
+  font-size: 16px;
+  padding: 15px;
+  color: #ffffff;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+}
