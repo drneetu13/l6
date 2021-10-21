@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 2021_10_05_091121) do
     t.text "todo_text"
     t.date "due_date"
     t.boolean "completed"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
   end
 
@@ -32,5 +30,6 @@ ActiveRecord::Schema.define(version: 2021_10_05_091121) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+
 
 end
