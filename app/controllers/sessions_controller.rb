@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to "/"
     elsif
       flash[:error] = "email or password is incorrect. Please try again!"
-      redirect_to signin_path
+      redirect_to "/"
     end
   end
 
